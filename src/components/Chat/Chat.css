@@ -1,0 +1,71 @@
+.chat-container {
+  width: 100vw;
+
+  display: flex;
+  padding: 2rem;
+}
+.chat-header {
+  display: table;
+  margin: 0 auto;
+  color: #333333;
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+.chat-form {
+  flex: 1;
+  display: flex;
+  align-items: start;
+}
+.chat-messages-container {
+  flex: 1;
+  margin: 2rem;
+  margin-left: 0 !important;
+  padding: 1rem;
+  border: 0.4rem #87cefa solid;
+  border-radius: 15px;
+  min-height: 10rem;
+}
+.chat-textarea {
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  height: 10rem;
+}
+.chat-btn {
+  margin: 1rem;
+  flex: 1 1 0;
+  height: 9rem;
+  padding: 0 2rem;
+  background-color: #616161;
+  color: white;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+.chat-btn:hover {
+  background-color: #333333;
+}
+.chat-btn:active {
+  transform: translateY(3px);
+}
+.name {
+  text-transform: capitalize;
+}
+.message {
+  padding-bottom: 0.5rem;
+}
+.from {
+  color: #ff6347;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.text {
+  color: darkslategray;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
