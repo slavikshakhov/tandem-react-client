@@ -7,10 +7,16 @@ const MatchedUser = ({ user, userFromSocket }) => {
   const dispatch = useDispatch();
   let history = useHistory();
   console.log(user);
+  /*
   const addContact = () => {
     console.log(user.name);
     dispatch({ type: "SET_CONTACT", payload: user.name });
     history.push("chat");
+  };
+  */
+  const openContactForm = () => {
+    dispatch({ type: "SET_CONTACT", payload: user });
+    history.push("/contact");
   };
   const startChat = () => {
     dispatch({ type: "SET_CHATTER", payload: userFromSocket });
@@ -39,27 +45,27 @@ const MatchedUser = ({ user, userFromSocket }) => {
         </div>
         <div className="languages-container">
           <div className="lgs">
-            <div>
-              <b>Speaks:</b>
-            </div>
+            <h4 className="lgs-header">Speaks:</h4>
 
             {user.offeredLgs?.map((lg) => {
-              return <li>{lg}</li>;
+              return <p>{lg}</p>;
             })}
           </div>
           <div className="lgs">
-            <div>
-              <b>Wants to learn:</b>
-            </div>
+            <h4 className="lgs-header">Learning:</h4>
+
             {user.wantedLgs?.map((lg) => {
-              return <li>{lg}</li>;
+              return <p>{lg}</p>;
             })}
           </div>
         </div>
       </div>
 
-      <button className="btn-raise" onClick={() => addContact()}>
-        Contact
+      <button
+        className="btn-raise contact-btn"
+        onClick={() => openContactForm()}
+      >
+        Send Email
       </button>
     </div>
   );

@@ -1,5 +1,50 @@
+.main {
+  width: 100%;
+}
+
+.users-page-container {
+  position: relative;
+}
+.message-notification {
+  position: absolute;
+  top: 5rem;
+  right: 5rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 5px 10px 8px #888888;
+  background-color: #ffc0cb;
+  border: none;
+  outline: none;
+}
+.message-notification:active {
+  transform: translateY(0.2rem);
+  box-shadow: 3px 5px 4px #888888;
+}
+
 .users-container {
   padding: 5rem;
   display: flex;
   flex-wrap: wrap;
+}
+.message-from-name {
+  text-transform: capitalize;
+}
+.no-users-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.no-users {
+  height: 3rem;
+  margin-top: 5rem;
+  padding: 1rem 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffc0cb;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: darkslategray;
+  border-radius: 10px;
+  box-shadow: 5px 10px 8px #888888;
 }

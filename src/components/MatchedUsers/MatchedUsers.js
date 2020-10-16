@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import io from "socket.io-client";
 import "./MatchedUsers.css";
 //import Slider from "react-slick";
 import MatchedUser from "../MatchedUser/MatchedUser";
+
 const MatchedUsers = () => {
   /*
   var settings = {
@@ -24,7 +26,9 @@ const MatchedUsers = () => {
   );
   const [socket, setSocket] = useState(null);
   const [message, setMessage] = useState("");
+  const [notifyAboutMessage, setNotifyAboutMessage] = useState(false);
   let dispatch = useDispatch();
+  let history = useHistory();
 
   useEffect(() => {
     console.log(currentUser);
@@ -56,6 +60,8 @@ const MatchedUsers = () => {
       console.log(connectedMembers);
       console.log(connectedUsers);
 
+      setNotifyAboutMessage(true);
+
       console.log(JSON.parse(currentUser));
       if (sender[0]) {
         setMessage({
@@ -78,8 +84,9 @@ const MatchedUsers = () => {
     });
     dispatch({ type: "SET_SOCKET", payload: socket });
     setSocket(socket);
-    //return () => socket.disconnect();
+    return () => setNotifyAboutMessage(false);
   }, []);
+
   const getUserFromSocket = (user) => {
     console.log(connectedUsers);
     console.log(connectedMembers);
@@ -94,18 +101,38 @@ const MatchedUsers = () => {
   };
   console.log(users);
   return (
-    <div className="users-container">
-      {users?.map((user, key) => {
-        return (
-          <div key={`${key}`} className="">
-            <MatchedUser user={user} userFromSocket={getUserFromSocket(user)} />
+    <div className="main">
+      {users && users.length !== 0 ? (
+        <div className="users-page-container">
+          <div className="users-container">
+            {users?.map((user, key) => {
+              return (
+                <div key={`${key}`} className="">
+                  <MatchedUser
+                    user={user}
+                    userFromSocket={getUserFromSocket(user)}
+                  />
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
-      <h1>
-        message:from {message.from} {"to "}
-        {message.to}-{message.text}
-      </h1>
+          {notifyAboutMessage && (
+            <button
+              className="message-notification"
+              onClick={() => history.push("/chat")}
+            >
+              You have a message from{" "}
+              <span className="message-from-name">{message.from}</span>
+            </button>
+          )}
+        </div>
+      ) : (
+        <div className="no-users-container">
+          <div className="no-users">
+            So far no users found that match your languages
+          </div>
+        </div>
+      )}
     </div>
   );
 };

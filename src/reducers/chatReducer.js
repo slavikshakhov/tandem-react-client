@@ -1,7 +1,6 @@
 import JwtDecode from "jwt-decode";
 
 const defaultState = {
-  contactName: "",
   socket: null,
   chatter: null,
   connectedMembers: null,
@@ -13,7 +12,7 @@ const chatReducer = (state = defaultState, action) => {
     case "SET_CONTACT":
       return {
         ...state,
-        contactName: action.payload,
+        contact: action.payload,
       };
     case "SET_CHATTER":
       return {

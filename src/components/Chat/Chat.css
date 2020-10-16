@@ -1,8 +1,10 @@
 .chat-container {
   width: 100vw;
-
   display: flex;
+  flex-wrap: wrap;
   padding: 2rem;
+}
+.chat-container-inner {
 }
 .chat-header {
   display: table;
@@ -25,12 +27,14 @@
   border: 0.4rem #87cefa solid;
   border-radius: 15px;
   min-height: 10rem;
+  min-width: 15rem;
 }
 .chat-textarea {
   padding: 1rem;
   font-size: 1.5rem;
   font-weight: 400;
   height: 10rem;
+  width: 35rem;
 }
 .chat-btn {
   margin: 1rem;
@@ -68,4 +72,51 @@
   color: darkslategray;
   font-size: 1.1rem;
   font-weight: 400;
+}
+.no-messages-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.no-messages {
+  width: 23rem;
+  height: 3rem;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffc0cb;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: darkslategray;
+  border-radius: 10px;
+  box-shadow: 5px 10px 8px #888888;
+}
+/*   MEDIA QUERIES */
+
+@media (min-width: 768px) {
+  /* 768 */
+}
+
+@media (max-width: 995px) {
+  .chat-textarea {
+    width: 15rem;
+  }
+}
+@media (max-width: 1280px) and (min-width: 767px) {
+  .login-form-top {
+    display: none;
+  }
+  .login-link {
+    display: block;
+  }
+  .top-menu-item {
+    font-size: 1rem;
+    padding: 0.5rem !important;
+  }
+}
+@media (max-width: 995px) and (min-width: 767px) {
+  .form {
+    min-width: 25rem;
+  }
 }

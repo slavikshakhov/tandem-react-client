@@ -1,29 +1,33 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
-import Input from "../../helpers/Input";
+import Input from '../../helpers/Input'
 
-import "./Register.css";
+import './Register.css'
 
 function Register(props) {
-  const dispatch = useDispatch();
-  const regMode = useSelector((state) => state.userStatus.regMode);
-
-  let history = useHistory();
+  const dispatch = useDispatch()
+  const regMode = useSelector((state) => state.userStatus.regMode)
+  //const registered = useSelector((state) => state.userStatus.registered)
+  const [registered, setRegistered] = useState(false)
+  let history = useHistory()
 
   let NameValidationRules = {
     required: false,
-  };
+  }
+  let EmailValidationRules = {
+    required: false,
+  }
   let PasswordValidationRules = {
     required: false,
     minLength: 4,
     maxLength: 8,
-    pattern: "(?=.*[0-9])(?=.*[A-Z])",
-  };
-  let CityValidationRules = { required: false };
-  let CountryValidationRules = { required: false };
+    pattern: '(?=.*[0-9])(?=.*[A-Z])',
+  }
+  let CityValidationRules = { required: false }
+  let CountryValidationRules = { required: false }
 
   const {
     value: name,
@@ -31,102 +35,114 @@ function Register(props) {
     reset: resetName,
     touched: nameTouched,
     errors: nameErrors,
-  } = Input(NameValidationRules);
+  } = Input(NameValidationRules)
+  const {
+    value: email,
+    bind: bindEmail,
+    reset: resetEmail,
+    touched: emailTouched,
+    errors: emailErrors,
+  } = Input(EmailValidationRules)
   const {
     value: password,
     bind: bindPassword,
     reset: resetPassword,
     touched: passwordTouched,
     errors: passwordErrors,
-  } = Input(PasswordValidationRules);
+  } = Input(PasswordValidationRules)
   const {
     value: city,
     bind: bindCity,
     reset: resetCity,
     touched: cityTouched,
     errors: cityErrors,
-  } = Input(CityValidationRules);
+  } = Input(CityValidationRules)
   const {
     value: country,
     bind: bindCountry,
     reset: resetCountry,
     touched: countryTouched,
     errors: countryErrors,
-  } = Input(CountryValidationRules);
+  } = Input(CountryValidationRules)
 
   console.log(
     `name errors: ${JSON.stringify(
-      nameErrors
+      nameErrors,
     )}, password errors: ${JSON.stringify(
-      passwordErrors
-    )}, name touched: ${nameTouched}, password touched: ${passwordTouched}`
-  );
+      passwordErrors,
+    )}, name touched: ${nameTouched}, password touched: ${passwordTouched}`,
+  )
 
-  const invalidNameInput = nameErrors?.required;
+  const invalidNameInput = nameErrors?.required
+  const invalidEmailInput = nameErrors?.required
   const invalidPasswordInputRequired =
     passwordErrors?.required &&
     passwordErrors?.minLength &&
     !passwordErrors?.maxLength &&
-    !passwordErrors?.pattern;
+    !passwordErrors?.pattern
   const invalidPasswordInputShort =
-    passwordTouched && passwordErrors?.minLength && !passwordErrors?.required;
-  const invalidPasswordInputLong = passwordErrors?.maxLength;
+    passwordTouched && passwordErrors?.minLength && !passwordErrors?.required
+  const invalidPasswordInputLong = passwordErrors?.maxLength
 
-  const invalidNameLabel = nameTouched && nameErrors?.required;
+  const invalidNameLabel = nameTouched && nameErrors?.required
+  const invalidEmailLabel = emailTouched && emailErrors?.required
 
   const invalidPasswordLabel =
     passwordTouched &&
     (passwordErrors?.required ||
       passwordErrors?.minLength ||
-      passwordErrors?.maxLength);
-  const validPasswordLabel = passwordTouched && !passwordErrors?.required;
+      passwordErrors?.maxLength)
+  const validPasswordLabel = passwordTouched && !passwordErrors?.required
 
-  const invalidCityLabel = cityTouched && cityErrors?.required;
-  const invalidCountryLabel = countryTouched && countryErrors?.required;
+  const invalidCityLabel = cityTouched && cityErrors?.required
+  const invalidCountryLabel = countryTouched && countryErrors?.required
 
   console.log(
-    Object.values(passwordErrors).filter((er) => er === true).length === 0
-  );
+    Object.values(passwordErrors).filter((er) => er === true).length === 0,
+  )
   console.log(
     `one of fields untouched: ${!(
       !nameTouched ||
       !passwordTouched ||
       !cityTouched ||
       !countryTouched
-    )}`
-  );
-  console.log(nameTouched, passwordTouched, cityTouched, countryTouched);
+    )}`,
+  )
+  console.log(nameTouched, passwordTouched, cityTouched, countryTouched)
 
   const invalidForm = () => {
     return !(
       !nameTouched ||
+      !emailTouched ||
       !passwordTouched ||
       !cityTouched ||
       !countryTouched
     ) ||
       Object.values(passwordErrors).filter((er) => er === true).length > 0 ||
       nameErrors?.required ||
+      emailErrors?.required ||
       cityErrors?.required ||
       countryErrors?.required
       ? true
-      : false;
-  };
+      : false
+  }
 
   const handleRegister = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const user = {
       name,
+      email,
       password,
       city,
       country,
-    };
-    console.log(JSON.stringify(user));
+    }
+    console.log(JSON.stringify(user))
 
     const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user),
-    };
+    }
 
     /*
         fetch('http://localhost:4000/users/register', requestOptions)
@@ -134,21 +150,24 @@ function Register(props) {
             .then(data => console.log(data) );
         
         */
-    fetch("http://localhost:4000/auth/register", requestOptions)
+    fetch('http://localhost:4000/auth/register', requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        resetName();
-        resetPassword();
-        resetCity();
-        resetCountry();
-        dispatch({ type: "SET_REGISTER_MODE", payload: false });
-      });
-  };
+        console.log(data)
+        resetName()
+        resetEmail()
+        resetPassword()
+        resetCity()
+        resetCountry()
+        dispatch({ type: 'SET_REGISTER_MODE', payload: false })
+        //dispatch({ type: 'SUCCESSFULLY_REGISTERED', payload: true })
+        setRegistered(true)
+      })
+  }
 
   return (
     <div className="register-page">
-      {regMode ? (
+      {regMode && !registered ? (
         <div className="register-page-container">
           <form
             onSubmit={handleRegister}
@@ -173,13 +192,39 @@ function Register(props) {
                 htmlFor="name"
                 className={`label ${
                   invalidNameLabel
-                    ? "is-invalid"
+                    ? 'is-invalid'
                     : nameTouched
-                    ? "is-valid"
-                    : ""
+                    ? 'is-valid'
+                    : ''
                 }`}
               >
-                {nameErrors?.required ? "Name!!!" : "Name"}
+                {nameErrors?.required ? 'Name!!!' : 'Name'}
+              </label>
+            </div>
+            <div className="input-group">
+              <input
+                type="email"
+                name="email"
+                className="input"
+                autoComplete="off"
+                {...bindEmail}
+              />
+              {invalidEmailInput ? (
+                <div className="feedback invalid-feedback">
+                  Email is required
+                </div>
+              ) : null}
+              <label
+                htmlFor="name"
+                className={`label ${
+                  invalidEmailLabel
+                    ? 'is-invalid'
+                    : emailTouched
+                    ? 'is-valid'
+                    : ''
+                }`}
+              >
+                {emailErrors?.required ? 'Email!!!' : 'Email'}
               </label>
             </div>
             {/* {`required: ${nameErrors?.required}, touched: ${nameErrors?.touched}`} */}
@@ -210,15 +255,15 @@ function Register(props) {
 
               <label
                 htmlFor="password"
-                className={`label ${invalidPasswordLabel ? "is-invalid" : ""} ${
-                  validPasswordLabel ? "is-valid" : ""
+                className={`label ${invalidPasswordLabel ? 'is-invalid' : ''} ${
+                  validPasswordLabel ? 'is-valid' : ''
                 }`}
               >
                 {passwordErrors?.required ||
                 (passwordTouched &&
                   (passwordErrors?.minLength || passwordErrors?.maxLength))
-                  ? "Password!!!"
-                  : "Password"}
+                  ? 'Password!!!'
+                  : 'Password'}
               </label>
             </div>
             <div className="input-group">
@@ -238,13 +283,13 @@ function Register(props) {
                 htmlFor="city"
                 className={`label ${
                   invalidCityLabel
-                    ? "is-invalid"
+                    ? 'is-invalid'
                     : cityTouched
-                    ? "is-valid"
-                    : ""
+                    ? 'is-valid'
+                    : ''
                 }`}
               >
-                {cityErrors?.required ? "City!!!" : "City"}
+                {cityErrors?.required ? 'City!!!' : 'City'}
               </label>
             </div>
             <div className="input-group">
@@ -264,13 +309,13 @@ function Register(props) {
                 htmlFor="name"
                 className={`label ${
                   invalidCountryLabel
-                    ? "is-invalid"
+                    ? 'is-invalid'
                     : countryTouched
-                    ? "is-valid"
-                    : ""
+                    ? 'is-valid'
+                    : ''
                 }`}
               >
-                {countryErrors?.required ? "Country!!!" : "Country"}
+                {countryErrors?.required ? 'Country!!!' : 'Country'}
               </label>
             </div>
 
@@ -278,7 +323,7 @@ function Register(props) {
               <button
                 type="submit"
                 className={`btn-raise btn-design btn-register ${
-                  invalidForm() ? "" : ""
+                  invalidForm() ? '' : ''
                 }`}
               >
                 Register
@@ -287,7 +332,7 @@ function Register(props) {
                 <button
                   className="btn-link cancel-register-btn"
                   onClick={() =>
-                    dispatch({ type: "SET_REGISTER_MODE", payload: false })
+                    dispatch({ type: 'SET_REGISTER_MODE', payload: false })
                   }
                 >
                   Cancel
@@ -296,9 +341,17 @@ function Register(props) {
             </div>
           </form>
         </div>
-      ) : null}
+      ) : (
+        registered && (
+          <div className="registered-message-container">
+            <div className="registered-message">
+              Registered Successfully! Please log in with your new credentials!
+            </div>
+          </div>
+        )
+      )}
     </div>
-  );
+  )
 }
 
-export default Register;
+export default Register

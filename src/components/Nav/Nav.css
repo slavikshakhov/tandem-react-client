@@ -321,10 +321,15 @@
 @media (max-width: 768px) {
   .burger-container {
     display: bloc;
-    margin-left: 65%;
+    margin-left: auto;
   }
-
+  /*
   .top-menu {
+    display: none;
+  }
+  */
+  .links,
+  .admin-box {
     display: none;
   }
   .btn-design {

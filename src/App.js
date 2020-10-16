@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRouter";
 import Login from "./components/Login/Login";
 import MatchedUsers from "./components/MatchedUsers/MatchedUsers";
 import Chat from "./components/Chat/Chat";
+import ContactForm from "./components/ContactForm/ContactForm";
 
 export default function App() {
   return (
@@ -25,12 +26,12 @@ export default function App() {
             <Route exact path="/register">
               <Register />
             </Route>
-            <Route exact path="/chat">
-              <Chat />
-            </Route>
+
             <PrivateRoute exact path="/home" component={Home} />
             <PrivateRoute exact path="/languages" component={LanguagesForm} />
             <PrivateRoute exact path="/matchedusers" component={MatchedUsers} />
+            <PrivateRoute exact path="/chat" component={Chat} />
+            <PrivateRoute exact path="/contact" component={ContactForm} />
           </Switch>
         </div>
       </Router>
