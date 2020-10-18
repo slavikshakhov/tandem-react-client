@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import "./ContactForm.css";
-
+import {config} from '../../Constants';
 const ContactForm = () => {
+  const URL = config.url.API_URL;
   const { register, handleSubmit, errors, watch } = useForm();
   const userToContact = useSelector((state) => state.chatReducer.contact);
   const currentUser = useSelector((state) => state.userStatus.currentUser);
@@ -25,7 +26,7 @@ const ContactForm = () => {
         text,
       }), //id: token.id
     };
-    fetch("http://localhost:4000/auth/sendemail", requestOptions)
+    fetch(`${URL}/auth/sendemail`, requestOptions)
       .then((res) => {
         setMessageSent(true);
         setTimeout(() => {

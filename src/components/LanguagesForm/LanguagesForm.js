@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form'
 import './LanguagesForm.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import {config} from '../../Constants';
 
 export default function LanguagesForm() {
+  const URL = config.url.API_URL;
   const decodedToken = useSelector((state) => state.userStatus.decodedToken)
 
   let history = useHistory()
@@ -107,7 +109,7 @@ export default function LanguagesForm() {
       }), //id: token.id
     }
     fetch(
-      'http://localhost:4000/auth/adduserofferedlgs',
+      `${URL}/auth/adduserofferedlgs`,
       requestOptionsOfferedLgs,
     )
       .then((response) => response.json())
@@ -129,7 +131,7 @@ export default function LanguagesForm() {
       }), //id: token.id
     }
     fetch(
-      'http://localhost:4000/auth/adduserwantedlgs',
+      `${URL}/auth/adduserwantedlgs`,
       requestOptionsWantedLgs,
     )
       .then((response) => response.json())
