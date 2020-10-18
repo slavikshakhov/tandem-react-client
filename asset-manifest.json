@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/tandem-react-client/static/css/main.5a79799f.chunk.css",
+    "main.js": "/tandem-react-client/static/js/main.d6908f6a.chunk.js",
+    "main.js.map": "/tandem-react-client/static/js/main.d6908f6a.chunk.js.map",
+    "runtime-main.js": "/tandem-react-client/static/js/runtime-main.558d40f1.js",
+    "runtime-main.js.map": "/tandem-react-client/static/js/runtime-main.558d40f1.js.map",
+    "static/css/2.b48d5b63.chunk.css": "/tandem-react-client/static/css/2.b48d5b63.chunk.css",
+    "static/js/2.b9b40eb4.chunk.js": "/tandem-react-client/static/js/2.b9b40eb4.chunk.js",
+    "static/js/2.b9b40eb4.chunk.js.map": "/tandem-react-client/static/js/2.b9b40eb4.chunk.js.map",
+    "index.html": "/tandem-react-client/index.html",
+    "precache-manifest.41b669fcc9178cb44f0ddcccaba46d70.js": "/tandem-react-client/precache-manifest.41b669fcc9178cb44f0ddcccaba46d70.js",
+    "service-worker.js": "/tandem-react-client/service-worker.js",
+    "static/css/2.b48d5b63.chunk.css.map": "/tandem-react-client/static/css/2.b48d5b63.chunk.css.map",
+    "static/css/main.5a79799f.chunk.css.map": "/tandem-react-client/static/css/main.5a79799f.chunk.css.map",
+    "static/js/2.b9b40eb4.chunk.js.LICENSE.txt": "/tandem-react-client/static/js/2.b9b40eb4.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/tandem-react-client/static/media/zw.8b885465.svg",
+    "static/media/font-awesome.min.css": "/tandem-react-client/static/media/fontawesome-webfont.fee66e71.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.558d40f1.js",
+    "static/css/2.b48d5b63.chunk.css",
+    "static/js/2.b9b40eb4.chunk.js",
+    "static/css/main.5a79799f.chunk.css",
+    "static/js/main.d6908f6a.chunk.js"
+  ]
+}
