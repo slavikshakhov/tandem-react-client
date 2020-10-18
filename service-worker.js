@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/tandem-react-client/precache-manifest.41b669fcc9178cb44f0ddcccaba46d70.js"
+  "/tandem-react-client/precache-manifest.ba42b4179661f999d3397501212067c2.js"
 );
 
 self.addEventListener('message', (event) => {

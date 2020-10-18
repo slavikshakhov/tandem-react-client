@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "63bf55ad15043ef22fefe5ac4446eeef",
+    "revision": "f2687d7ac4cf4f9ee7f6272f36b48d7e",
     "url": "/tandem-react-client/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/tandem-react-client/static/css/2.b48d5b63.chunk.css"
   },
   {
-    "revision": "e1b2ea203c662a9ae000",
+    "revision": "19ae3edd7d89ebc8ca3d",
     "url": "/tandem-react-client/static/css/main.5a79799f.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/tandem-react-client/static/js/2.b9b40eb4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e1b2ea203c662a9ae000",
-    "url": "/tandem-react-client/static/js/main.d6908f6a.chunk.js"
+    "revision": "19ae3edd7d89ebc8ca3d",
+    "url": "/tandem-react-client/static/js/main.317b4edd.chunk.js"
   },
   {
     "revision": "737dbba57db20e4c1d9f",
