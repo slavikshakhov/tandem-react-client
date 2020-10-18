@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
+import {config} from '../../Constants';
 
 import Input from '../../helpers/Input'
 
 import './Register.css'
 
 function Register(props) {
+  const URL = config.url.API_URL;
   const dispatch = useDispatch()
   const regMode = useSelector((state) => state.userStatus.regMode)
   //const registered = useSelector((state) => state.userStatus.registered)
@@ -150,7 +152,7 @@ function Register(props) {
             .then(data => console.log(data) );
         
         */
-    fetch('http://localhost:4000/auth/register', requestOptions)
+    fetch(`${URL}/auth/register`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log(data)

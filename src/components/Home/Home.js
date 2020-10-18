@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import {config} from '../../Constants';
 import UsersToMeet from '../UsersToMeet/UsersToMeet'
 import MatchedUsers from '../MatchedUsers/MatchedUsers'
 import LanguagesForm from '../LanguagesForm/LanguagesForm'
 import './Home.css'
 
-import io from 'socket.io-client'
+//import io from 'socket.io-client'
 
 const Home = () => {
+  const URL = config.url.API_URL;
   const decodedToken = useSelector((state) => state.userStatus.decodedToken)
   const currentUser = useSelector((state) => state.userStatus.currentUser)
   //console.log(decodedToken.id);
@@ -62,7 +64,7 @@ const Home = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id: decodedToken.id }), // id: decodedToken.id
     }
-    fetch('http://localhost:4000/auth/thisUserOfferedLgs', requestOptions)
+    fetch(`${URL}/auth/thisUserOfferedLgs`, requestOptions)
       .then((resp) => resp.json())
       .then((offeredLgs) => {
         const mode = offeredLgs?.offeredlgs.length === 0 ? true : false
@@ -81,7 +83,7 @@ const Home = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id: decodedToken.id }), // id: decodedToken.id
     }
-    fetch('http://localhost:4000/auth/thisUserWantedLgs', requestOptions)
+    fetch(`${URL}/auth/thisUserWantedLgs`, requestOptions)
       .then((resp) => resp.json())
       .then((wantedLgs) => {
         const mode = wantedLgs?.wantedlgs.length === 0 ? true : false
@@ -104,7 +106,7 @@ const Home = () => {
         wantedLgs: wantedLgsArr,
       }),
     }
-    fetch('http://localhost:4000/auth/filterUsers', requestOptions)
+    fetch(`${URL}/auth/filterUsers`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.filteredUsers)

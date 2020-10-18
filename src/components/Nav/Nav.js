@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import ImageUploader from 'react-images-upload'
+import {config} from '../../Constants';
+//import ImageUploader from 'react-images-upload'
 import Input from '../../helpers/Input'
 
 import './Nav.css'
@@ -15,6 +16,7 @@ export default function Nav() {
   const socket = useSelector((state) => state.chatReducer.socket)
   console.log()
   const dispatch = useDispatch()
+  const URL = config.url.API_URL;
 
   let NameValidationRules = {
     required: false,
@@ -79,7 +81,7 @@ export default function Nav() {
     }
 
     //post request to Node.js server
-    fetch('http://localhost:4000/auth/login', requestOptions)
+    fetch(`${URL}/auth/login`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log(data)

@@ -2,12 +2,14 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import {config} from '../../Constants';
 
 import Input from "../../helpers/Input";
 
 import "./Login.css";
 
 function Login(props) {
+  const URL = config.url.API_URL;
   const dispatch = useDispatch();
 
   let history = useHistory();
@@ -73,7 +75,7 @@ function Login(props) {
     };
 
     //post request to Node.js server
-    fetch("http://localhost:4000/auth/login", requestOptions)
+    fetch(`${URL}/auth/login`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

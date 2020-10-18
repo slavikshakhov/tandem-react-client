@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import io from "socket.io-client";
 import "./MatchedUsers.css";
+import {config} from '../../Constants';
 //import Slider from "react-slick";
 import MatchedUser from "../MatchedUser/MatchedUser";
 
@@ -16,6 +17,7 @@ const MatchedUsers = () => {
     slidesToScroll: 6,
   };
   */
+ const URL = config.url.API_URL;
   const users = useSelector((state) => state.userStatus.filteredUsers);
   const decodedToken = useSelector((state) => state.userStatus.decodedToken);
   const currentUser = useSelector((state) => state.userStatus.currentUser);
@@ -32,7 +34,7 @@ const MatchedUsers = () => {
 
   useEffect(() => {
     console.log(currentUser);
-    const socket = io("http://localhost:4000").on("connect", () => {
+    const socket = io(URL).on("connect", () => {
       console.log("connected to server");
     });
     if (connectedMembers) {
