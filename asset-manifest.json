@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/tandem-react-client/static/css/main.5a79799f.chunk.css",
-    "main.js": "/tandem-react-client/static/js/main.317b4edd.chunk.js",
-    "main.js.map": "/tandem-react-client/static/js/main.317b4edd.chunk.js.map",
+    "main.js": "/tandem-react-client/static/js/main.72bcc3d0.chunk.js",
+    "main.js.map": "/tandem-react-client/static/js/main.72bcc3d0.chunk.js.map",
     "runtime-main.js": "/tandem-react-client/static/js/runtime-main.558d40f1.js",
     "runtime-main.js.map": "/tandem-react-client/static/js/runtime-main.558d40f1.js.map",
     "static/css/2.b48d5b63.chunk.css": "/tandem-react-client/static/css/2.b48d5b63.chunk.css",
     "static/js/2.b9b40eb4.chunk.js": "/tandem-react-client/static/js/2.b9b40eb4.chunk.js",
     "static/js/2.b9b40eb4.chunk.js.map": "/tandem-react-client/static/js/2.b9b40eb4.chunk.js.map",
     "index.html": "/tandem-react-client/index.html",
-    "precache-manifest.ba42b4179661f999d3397501212067c2.js": "/tandem-react-client/precache-manifest.ba42b4179661f999d3397501212067c2.js",
+    "precache-manifest.96420d6eb1cc49d5a083d003ac4c2eaa.js": "/tandem-react-client/precache-manifest.96420d6eb1cc49d5a083d003ac4c2eaa.js",
     "service-worker.js": "/tandem-react-client/service-worker.js",
     "static/css/2.b48d5b63.chunk.css.map": "/tandem-react-client/static/css/2.b48d5b63.chunk.css.map",
     "static/css/main.5a79799f.chunk.css.map": "/tandem-react-client/static/css/main.5a79799f.chunk.css.map",
@@ -22,6 +22,6 @@
     "static/css/2.b48d5b63.chunk.css",
     "static/js/2.b9b40eb4.chunk.js",
     "static/css/main.5a79799f.chunk.css",
-    "static/js/main.317b4edd.chunk.js"
+    "static/js/main.72bcc3d0.chunk.js"
   ]
 }
